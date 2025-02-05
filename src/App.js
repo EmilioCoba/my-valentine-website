@@ -9,6 +9,7 @@ const phrases = [
   "Don't do this to me",
   "I'm gonna cry...",
   "You're breaking my heart :(",
+  "Last chance... :(",
 ];
 
 const gif = [
@@ -27,7 +28,11 @@ export default function App() {
   const [noImg, setNoImg] = useState(
     "https://media.tenor.com/P9kCF-ZRvn8AAAAj/dudu-heart-cute.gif"
   );
-  const yesButtonSize = noCount * 50 + 16;
+
+  const isMobile = window.innerWidth < 600;
+  const yesButtonSize = isMobile
+    ? Math.min(noCount * 10 + 16, 100)
+    : noCount * 50 + 16;
 
   function handleNoClick() {
     setNoCount(noCount + 1);
